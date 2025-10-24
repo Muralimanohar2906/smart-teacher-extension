@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Teacher - YouTube Notes & Quiz",
+  "version": "1.0",
+  "description": "Convert YouTube captions into notes, generate quizzes, and jump to the video timeline for answers.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://www.youtube.com/*",
+    "*://youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/watch*"],
+      "js": ["libs/xmldom.min.js","libs/compromise.min.js","content_script.js"],
+      "css": ["inject.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

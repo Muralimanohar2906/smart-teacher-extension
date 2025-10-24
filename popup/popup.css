@@ -1,0 +1,3 @@
+body { margin:0; padding:0; width:300px; }
+button { background:#1a73e8; color:white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-size:14px; }
+#status { margin-top:8px; font-size:13px; }

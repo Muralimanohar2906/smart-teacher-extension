@@ -1,0 +1,23 @@
+#st-overlay {
+  position: fixed; right: 16px; bottom: 16px; z-index: 999999;
+  width: 420px; max-height: 70vh; overflow: auto;
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15); font: 14px/1.4 system-ui, Arial;
+}
+#st-overlay header {
+  display:flex; gap:8px; align-items:center; justify-content:space-between;
+  padding:10px 12px; border-bottom:1px solid #f0f0f0; background:#f8fafc; position:sticky; top:0;
+}
+#st-overlay .tabs { display:flex; gap:10px; }
+#st-overlay .tab { padding:6px 10px; border-radius:999px; cursor:pointer; border:1px solid #e5e7eb; }
+#st-overlay .tab.active { background:#2563eb; color:#fff; border-color:#2563eb; }
+#st-overlay .section { padding:12px; display:none; }
+#st-overlay .section.active { display:block; }
+#st-quiz .q { margin:10px 0; }
+#st-quiz .q h4 { margin:0 0 6px; }
+#st-quiz .q .opt { display:block; padding:6px 8px; border-radius:8px; border:1px solid #eee; margin:6px 0; cursor:pointer; }
+#st-quiz .opt.correct { border-color:#22c55e; background:#ecfdf5; }
+#st-quiz .opt.wrong { border-color:#ef4444; background:#fef2f2; }
+#st-overlay footer { display:flex; gap:8px; padding:12px; border-top:1px solid #f0f0f0; }
+#st-overlay button { padding:8px 10px; border:0; border-radius:10px; background:#2563eb; color:#fff; cursor:pointer; }
+#st-overlay .muted { color:#6b7280; font-size:12px; }

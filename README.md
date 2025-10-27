@@ -1,21 +1,15 @@
-# Smart Teacher - YouTube Notes & Quiz (Unpacked extension)
+# Smart Teacher (Gemini-powered)
 
-## Install
-1. Save the folder `smart-teacher-extension` with the files.
-2. Open Chrome / Edge -> `chrome://extensions`.
-3. Toggle **Developer mode**.
-4. Click **Load unpacked** and select the folder.
+Chrome extension that generates **Smart Quiz** and **Smart Notes** for YouTube videos.
 
-## Usage
-- Open any `youtube.com/watch?...` page.
-- The content script auto-runs and places an overlay at the lower-right.
-- Or open the extension popup and click **Inject**.
+## How it works
+- Content script opens/scrapes the on-page Transcript panel.
+- Sends transcript to a local FastAPI server that calls **Google Gemini**.
+- Renders tabs (Quiz/Notes) on top of the video with **download** (TXT + PDF).
 
-## Notes & Limitations
-- This version relies on YouTube timedtext (captions). If captions are absent, it prompts the user.
-- All processing is client-side. No remote servers are used by default.
-- For higher-quality quizzes, integrate an LLM backend.
-
-## Files
-See file list in the repository root.
-
+## Run the server
+```bash
+cd server
+cp .env.example .env   # put GEMINI_API_KEY
+pip install -r requirements.txt
+uvicorn main:app --reload --host 0.0.0.0 --port 8000

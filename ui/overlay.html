@@ -1,29 +1,17 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Smart Teacher Preview</title>
-  <link rel="stylesheet" href="../inject.css">
-</head>
-<body>
-  <div class="smart-teacher-overlay">
-    <div class="smart-teacher-header">
-      <div class="smart-teacher-title">Smart Teacher</div>
-      <div>
-        <button class="smart-teacher-btn">Refresh</button>
-        <button class="smart-teacher-btn" style="background:#666">Close</button>
-      </div>
-    </div>
-    <div class="smart-teacher-section">
-      <div style="font-weight:600">Notes</div>
-      <div class="smart-teacher-note">Sample note paragraph...</div>
-    </div>
-    <div class="smart-teacher-section">
-      <div style="font-weight:600">Quiz</div>
-      <div>
-        <div class="quiz-question">Q: Example question <button class="quiz-choice">Option A</button></div>
-      </div>
-    </div>
+<div id="st-overlay">
+  <header>
+    <strong>Smart Teacher</strong>
+    <span class="muted" id="st-status">Idle</span>
+  </header>
+  <div class="tabs">
+    <div class="tab active" data-tab="quiz">Smart Quiz</div>
+    <div class="tab" data-tab="notes">Smart Notes</div>
   </div>
-</body>
-</html>
+  <section id="st-quiz" class="section active"></section>
+  <section id="st-notes" class="section"></section>
+  <footer>
+    <button id="st-download-notes">Download Notes (TXT)</button>
+    <button id="st-download-pdf">Download PDF</button>
+    <button id="st-close">Close</button>
+  </footer>
+</div>

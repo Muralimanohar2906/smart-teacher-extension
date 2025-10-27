@@ -58,7 +58,7 @@ class ProofreadIn(BaseModel):
 
 class TranslateIn(BaseModel):
     text: str
-    target_language: str = Field(..., description="e.g., Hindi, Spanish, French")
+    target_language: str = Field(..., description="e.g., Hindi, Spanish, French,Telugu")
 
 
 class MCQ(BaseModel):

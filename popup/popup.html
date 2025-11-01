@@ -6,17 +6,67 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h2>Smart Teacher</h2>
-  <label>Server URL</label>
-  <input id="serverUrl" placeholder="http://127.0.0.1:8000" />
-  <label>Questions</label>
-  <input id="numQ" type="number" min="1" max="12" value="5" />
-  <label>Difficulty</label>
-  <select id="difficulty">
-    <option>mixed</option><option>easy</option><option>medium</option><option>hard</option>
-  </select>
-  <button id="genBtn">Generate for this video</button>
-  <div id="status"></div>
+  <header class="hero">
+    <div>
+      <h1>Smart Teacher</h1>
+      <p class="tagline">Gemini-powered study coach for YouTube.</p>
+    </div>
+  </header>
+
+  <section class="card" id="readinessCard">
+    <div class="card-header">
+      <h2>Readiness</h2>
+      <button id="checkStatus" class="ghost">Quick Check</button>
+    </div>
+    <div class="chips" id="statusChips">
+      <div class="chip" id="nanoStatus" data-state="unknown">Gemini Nano • not checked</div>
+      <div class="chip" id="serverStatus" data-state="unknown">Server • not checked</div>
+    </div>
+    <div class="status-note" id="statusNote">Tip: run a quick check to confirm on-device AI and server reachability.</div>
+  </section>
+
+  <section class="card">
+    <h2>Generation Settings</h2>
+    <label>Server URL</label>
+    <input id="serverUrl" placeholder="http://127.0.0.1:8000" />
+
+    <div class="grid">
+      <div>
+        <label>Questions</label>
+        <input id="numQ" type="number" min="1" max="12" value="5" />
+      </div>
+      <div>
+        <label>Difficulty</label>
+        <select id="difficulty">
+          <option>mixed</option><option>easy</option><option>medium</option><option>hard</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="inline">
+      <input id="preferLocal" type="checkbox" checked />
+      Prefer on-device Gemini Nano
+    </label>
+    <small id="localHint" class="hint">
+      Chrome will try built-in Gemini Nano first, then fall back to your server.
+    </small>
+
+    <label>On-device strategy</label>
+    <select id="nanoStrategy">
+      <option value="auto">Auto-detect</option>
+      <option value="window.ai">window.ai</option>
+      <option value="chrome.aiOriginTrial">chrome.aiOriginTrial</option>
+    </select>
+
+    <label>Creativity</label>
+    <div class="slider-row">
+      <input id="temperature" type="range" min="0.2" max="1.0" step="0.05" value="0.6" />
+      <span class="hint" id="temperatureLabel">Balanced</span>
+    </div>
+  </section>
+
+  <button id="genBtn" class="primary">Generate for this video</button>
+  <div id="status" class="status-message"></div>
   <script src="popup.js"></script>
 </body>
 </html>

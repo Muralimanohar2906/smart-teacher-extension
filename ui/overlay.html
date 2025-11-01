@@ -1,17 +1,41 @@
 <div id="st-overlay">
   <header>
-    <strong>Smart Teacher</strong>
-    <span class="muted" id="st-status">Idle</span>
+    <div class="title">
+      <strong>Smart Teacher</strong>
+      <span class="muted" id="st-status">Idle</span>
+    </div>
   </header>
+  <div class="progress" id="st-progress">
+    <div class="progress-step active" data-step="transcript">Transcript</div>
+    <div class="progress-step" data-step="ai">AI</div>
+    <div class="progress-step" data-step="render">Output</div>
+  </div>
+  <div class="meta">
+    <div class="meta-row">
+      <span class="meta-label">Mode</span>
+      <span id="st-meta-origin">—</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Language</span>
+      <span id="st-meta-lang">—</span>
+    </div>
+    <div class="meta-row">
+      <span class="meta-label">Cache</span>
+      <span id="st-meta-cache" class="muted">—</span>
+    </div>
+  </div>
   <div class="tabs">
     <div class="tab active" data-tab="quiz">Smart Quiz</div>
     <div class="tab" data-tab="notes">Smart Notes</div>
+    <div class="tab" data-tab="coach">Study Coach</div>
   </div>
   <section id="st-quiz" class="section active"></section>
   <section id="st-notes" class="section"></section>
+  <section id="st-coach" class="section"></section>
   <footer>
     <button id="st-download-notes">Download Notes (TXT)</button>
     <button id="st-download-pdf">Download PDF</button>
+    <button id="st-refresh">Regenerate</button>
     <button id="st-close">Close</button>
   </footer>
 </div>

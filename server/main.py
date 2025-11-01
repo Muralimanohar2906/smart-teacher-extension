@@ -70,6 +70,7 @@ class MCQ(BaseModel):
 
 class GenerateOut(BaseModel):
     notes_markdown: str
+    study_plan_markdown: str
     quiz: List[MCQ]
     source_words: int
     source_language: str
@@ -302,8 +303,23 @@ def generate(data: GenerateIn):
         if not mcqs:
             raise ValueError("No valid MCQs found after parse & repair.")
 
+        plan_prompt = (
+            f"{SYSTEM_PROMPT}\n\n{header}"
+            "Design a personalized study coach plan with markdown headings:\n"
+            "## Quick Diagnostic (2 bullet insights)\n"
+            "## Priority Topics (bullet list of concepts to review)\n"
+            "## Practice Actions (3 actionable tasks referencing transcript specifics)\n"
+            "## Reflection Prompts (2 short questions for self-assessment)\n"
+            "Ground everything in the transcript (do not invent external facts).\n"
+            "Keep total length under 220 words.\n"
+            "Transcript:\n"
+            f"{transcript_en}"
+        )
+        study_plan = call_gemini(plan_prompt).strip()
+
         return GenerateOut(
             notes_markdown=notes_md,
+            study_plan_markdown=study_plan,
             quiz=mcqs,
             source_words=len(transcript_en.split()),
             source_language=lang,
